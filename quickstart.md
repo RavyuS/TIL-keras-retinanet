@@ -22,7 +22,7 @@
 
 ## Evaluating model
 1. If you followed the file structure from above, you should be able to run evaluate like this in `pipenv shell`
-2. `python keras_retinanet/bin/evaluate.py csv val_annot.csv test_class.csv saved_models/test.h5`
+2. `python keras_retinanet/bin/evaluate.py csv val_annot.csv class.csv saved_models/test.h5`
 
 ## Sample Directory Structure
 ```

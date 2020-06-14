@@ -3,20 +3,21 @@
 Keras implementation of RetinaNet object detection as described in [Focal Loss for Dense Object Detection](https://arxiv.org/abs/1708.02002)
 by Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He and Piotr Dollár.
 
-## Warning
-
-This repository is migrating to (tf-retinanet)[https://github.com/fizyr/tf-retinanet], a `tf.keras` porting of `keras-retinanet`.
 
 ## Installation
 
 1) Clone this repository.
 2) Ensure numpy is installed using `pip install numpy --user`
-3) In the repository, execute `pip install . --user`.
+3) (NOT RECOMMENDED, SKIP TO STEP 4)In the repository, execute `pip install . --user`.
    Note that due to inconsistencies with how `tensorflow` should be installed,
    this package does not define a dependency on `tensorflow` as it will try to install that (which at least on Arch Linux results in an incorrect installation).
    Please make sure `tensorflow` is installed as per your systems requirements.
-4) Alternatively, you can run the code directly from the cloned  repository, however you need to run `python setup.py build_ext --inplace` to compile Cython code first.
-5) Optionally, install `pycocotools` if you want to train / test on the MS COCO dataset by running `pip install --user git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI`.
+4) (RECOMMENDED)Alternatively, you can run the code directly from the cloned  repository, however you need to run `python setup.py build_ext --inplace` to compile Cython code first.
+5) (NOT NEEDED) Optionally, install `pycocotools` if you want to train / test on the MS COCO dataset by running `pip install --user git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI`.
+
+## [Quickstart](quickstart.md)
+
+Go [here to see the useful commands](quickstart.md)
 
 ## Testing
 An example of testing the network can be seen in [this Notebook](https://github.com/delftrobotics/keras-retinanet/blob/master/examples/ResNet50RetinaNet.ipynb).
