@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+ipykernel = "*"
+
+[packages]
+keras-resnet = "==0.1.0"
+h5py = "*"
+matplotlib = "*"
+numpy = ">=1.14"
+opencv-python = ">=3.3.0"
+progressbar2 = "*"
+tensorflow = "*"
+Cython = "*"
+Keras = "*"
+Pillow = "*"
+pandas = "*"
+
+[requires]
+python_version = "3.6"
