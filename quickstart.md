@@ -6,6 +6,11 @@
    1. See my directory structure below
 
 
+## Downloading weights
+1. http://118.189.199.196:219/nextcloud/index.php/apps/files/?dir=/TIL2020&fileid=582393
+2. Password: testtest69
+3. Note that the unconverted models (weights basically) should be around 240mb
+
 ## Converting weights to model
 1. Create a `saved_models/` folder
 2. Store the weights I have uploaded in `snapshots/` (create if not there)
