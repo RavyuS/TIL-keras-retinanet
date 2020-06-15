@@ -36,7 +36,7 @@
 ## Training model
 1. Make sure your most recent snapshot **weight**(not converted model) is saved in `snapshots/`. Im assuming the snapshot used is on epoch 6 here.
 2. Find GPU ID with `nvidia-smi`. Im assuming 2
-3. Run `python keras_retinanet/bin/train.py --snapshot snapshots/resnet50_csv_06.h5 --batch-size 2 --steps 6100 --gpu 2 --initial-epoch 7 csv test_annot.csv class.csv`
+3. Run `python keras_retinanet/bin/train.py --snapshot snapshots/resnet50_csv_06.h5 --batch-size 2 --steps 6100 --gpu 2 --initial-epoch 7 --no-evaluation csv test_annot.csv class.csv`
 4. Monitor GPU usage (if using) to ensure everything is running correctly.
 
 
