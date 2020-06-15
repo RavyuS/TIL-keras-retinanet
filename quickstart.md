@@ -1,10 +1,18 @@
 # Quickstart Commands
 
+- [Quickstart Commands](#quickstart-commands)
+  - [Prerequisites](#prerequisites)
+  - [Downloading weights](#downloading-weights)
+  - [Converting weights to model](#converting-weights-to-model)
+  - [Evaluating model](#evaluating-model)
+  - [Training model](#training-model)
+  - [Sample Directory Structure](#sample-directory-structure)
+
 ## Prerequisites
 1. Follow the "Installation Instruction" in the [README.md](README.md), make sure you skip step 3 and 5
 2. Make sure your `data` folder is one level above this repository (aka ../data/). This is where the competition datasets will be
    1. See my directory structure below
-3. run `pipenv install` to pull packages
+3. run `pipenv install` to pull packages or if you are inside condas env `pip install -r requirements.txt`
 
 
 ## Downloading weights
@@ -23,6 +31,14 @@
 ## Evaluating model
 1. If you followed the file structure from above, you should be able to run evaluate like this in `pipenv shell`
 2. `python keras_retinanet/bin/evaluate.py csv val_annot.csv class.csv saved_models/test.h5`
+
+
+## Training model
+1. Make sure your most recent snapshot **weight**(not converted model) is saved in `snapshots/`. Im assuming the snapshot used is on epoch 6 here.
+2. Find GPU ID with `nvidia-smi`. Im assuming 2
+3. Run `python keras_retinanet/bin/train.py --snapshot snapshots/resnet50_csv_06.h5 --batch-size 2 --steps 6100 --gpu 2 --initial-epoch 7 csv test_annot.csv class.csv`
+4. Monitor GPU usage (if using) to ensure everything is running correctly.
+
 
 ## Sample Directory Structure
 ```
