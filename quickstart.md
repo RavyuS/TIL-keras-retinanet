@@ -6,6 +6,7 @@
   - [Converting weights to model](#converting-weights-to-model)
   - [Evaluating model](#evaluating-model)
   - [Training model](#training-model)
+    - [Optimizing AWS GPU settings](#optimizing-aws-gpu-settings)
   - [Sample Directory Structure](#sample-directory-structure)
 
 ## Prerequisites
@@ -34,11 +35,18 @@
 
 
 ## Training model
-1. Make sure your most recent snapshot **weight**(not converted model) is saved in `snapshots/`. Im assuming the snapshot used is on epoch 6 here.
-2. Find GPU ID with `nvidia-smi`. Im assuming 2
-3. Run `python keras_retinanet/bin/train.py --snapshot snapshots/resnet50_csv_06.h5 --batch-size 2 --steps 6100 --gpu 2 --initial-epoch 7 --no-evaluation csv test_annot.csv class.csv`
-4. Monitor GPU usage (if using) to ensure everything is running correctly.
+1. If using AWS, refer to section below on optimizing performance
+2. Go into condas environment
+3. Make sure your most recent snapshot **weight**(not converted model) is saved in `snapshots/`. Im assuming the snapshot used is on epoch 6 here.
+4. Find GPU ID with `nvidia-smi`. Im assuming 2
+5. Run `python keras_retinanet/bin/train.py --snapshot snapshots/resnet50_csv_06.h5 --batch-size 2 --steps 6100 --gpu 2 --initial-epoch 7 --no-evaluation csv test_annot.csv class.csv`
+6. Monitor GPU usage (if using) to ensure everything is running correctly.
 
+### Optimizing AWS GPU settings
+1. Follow this guide https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/optimize_gpu.html
+2. Run all this outside condas environment
+3. `sudo nvidia-persistenced`
+4. For P3 (Tesla V100) `sudo nvidia-smi -ac 877,1530` to set GPU clockspeed to maximum.
 
 ## Sample Directory Structure
 ```
