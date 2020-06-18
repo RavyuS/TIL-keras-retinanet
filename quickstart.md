@@ -7,6 +7,7 @@
   - [Evaluating model](#evaluating-model)
   - [Training model](#training-model)
     - [Optimizing AWS GPU settings](#optimizing-aws-gpu-settings)
+  - [New model training plan](#new-model-training-plan)
   - [Sample Directory Structure](#sample-directory-structure)
 
 ## Prerequisites
@@ -47,6 +48,14 @@
 2. Run all this outside condas environment
 3. `sudo nvidia-persistenced`
 4. For P3 (Tesla V100) `sudo nvidia-smi -ac 877,1530` to set GPU clockspeed to maximum.
+
+
+## New model training plan
+- ResNet101
+- Freeze Backbone
+- 10 Epochs
+- Customized anchors
+`python keras_retinanet/bin/train.py --backbone=resnet101 --config config.ini --steps 13317 --epochs 10 --freeze-backbone --compute-val-loss csv test_annot.csv class.csv`
 
 ## Sample Directory Structure
 ```
