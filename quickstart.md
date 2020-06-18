@@ -26,7 +26,7 @@
 2. Store the weights I have uploaded in `snapshots/` (create if not there)
 3. Run the code (edit the names appropriately) in `pipenv shell`
 
-`python keras_retinanet/bin/convert_model.py snapshots/resnet50_csv_01.h5 saved_models/test.h5 `
+`python keras_retinanet/bin/convert_model.py --config config.ini snapshots/resnet50_csv_01.h5 saved_models/test.h5 `
 
 
 ## Evaluating model
@@ -39,7 +39,7 @@
 2. Go into condas environment
 3. Make sure your most recent snapshot **weight**(not converted model) is saved in `snapshots/`. Im assuming the snapshot used is on epoch 6 here.
 4. Find GPU ID with `nvidia-smi`. Im assuming 2
-5. Run `python keras_retinanet/bin/train.py --snapshot snapshots/resnet50_csv_06.h5 --steps 13317 --initial-epoch 6 --no-evaluation csv test_annot.csv class.csv`
+5. (EXAMPLE) Run `python keras_retinanet/bin/train.py --snapshot snapshots/resnet50_csv_06.h5 --config config.ini --steps 13317 --initial-epoch 6 --no-evaluation csv test_annot.csv class.csv`
 6. Monitor GPU usage (if using) to ensure everything is running correctly.
 
 ### Optimizing AWS GPU settings
