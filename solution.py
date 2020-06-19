@@ -23,10 +23,10 @@ setup_gpu(gpu)
 
 # adjust this to point to your downloaded/trained model
 # models can be downloaded here: https://github.com/fizyr/keras-retinanet/releases
-model_path = os.path.join('saved_models', 'test.h5')
+model_path = os.path.join('saved_models', 'resnet101_csv_05_converted.h5')
 
 # load retinanet model
-model = models.load_model(model_path, backbone_name='resnet50')
+model = models.load_model(model_path, backbone_name='resnet101')
 
 # if the model is not converted to an inference model, use the line below
 # see: https://github.com/fizyr/keras-retinanet#converting-a-training-model-to-inference-model
@@ -41,15 +41,20 @@ labels_to_names = {1: 'tops', 2: 'trousers', 3: 'outerwear', 4: 'dresses', 5: 's
 import glob
 
 image_paths = []
-for filename in glob.glob('images/*.jpg'):
-    folder, file = filename.split('/')
+for filename in glob.glob('../data/val/val/*.jpg'):
+    # folder, file = filename.split('/')
+    tmp = filename.split('/')
+    x = ""
+    for i in range(len(tmp)-1): x += tmp[i]
+
+    folder, file = x, tmp[-1]
     idx, typ = file.split('.')
     image_paths.append([int(idx), file])
 
 res = []
 for idx, image in image_paths:
     # load image
-    image = read_image_bgr('images/'+image)
+    image = read_image_bgr('../data/val/val/'+image)
 
     # preprocess image for network
     image = preprocess_image(image)
@@ -69,10 +74,10 @@ for idx, image in image_paths:
         # add to res
         x1, y1, x2, y2 = list(box)
         tmp = {
-                "image_id": int(idx)+1,
-                "category_id": int(label),
+                "image_id": int(idx),
+                "category_id": int(label)+1,
                 "bbox": [
-                    float(x1), float(y1), float(x2-x1), float(y2-y1)
+                    int(x1), int(y1), int(x2-x1), int(y2-y1)
                 ],
                 "score": float(score)
             }

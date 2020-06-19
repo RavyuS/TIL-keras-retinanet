@@ -27,12 +27,12 @@
 2. Store the weights I have uploaded in `snapshots/` (create if not there)
 3. Run the code (edit the names appropriately) in `pipenv shell`
 
-`python keras_retinanet/bin/convert_model.py --config config.ini snapshots/resnet50_csv_01.h5 saved_models/test.h5 `
+`python keras_retinanet/bin/convert_model.py --backbone=resnet101 --config config.ini snapshots/resnet50_csv_01.h5 saved_models/test.h5 `
 
 
 ## Evaluating model
 1. If you followed the file structure from above, you should be able to run evaluate like this in `pipenv shell`
-2. `python keras_retinanet/bin/evaluate.py csv val_annot.csv class.csv saved_models/test.h5`
+2. `python keras_retinanet/bin/evaluate.py --backbone=resnet101 csv val_annot.csv class.csv saved_models/test.h5`
 
 
 ## Training model
@@ -55,7 +55,7 @@
 - Freeze Backbone
 - 10 Epochs
 - Customized anchors
-`python keras_retinanet/bin/train.py --backbone=resnet101 --config config.ini --steps 13317 --epochs 10 --freeze-backbone --compute-val-loss csv test_annot.csv class.csv`
+`python keras_retinanet/bin/train.py --backbone=resnet101 --config config.ini --steps 6658 --batch-size 2 --epochs 10 --freeze-backbone --compute-val-loss csv test_annot.csv class.csv`
 
 ## Sample Directory Structure
 ```
