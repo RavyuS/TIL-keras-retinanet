@@ -64,3 +64,8 @@
 ├── keras-retinanet
 └── Your other repos/stuff
 ```
+
+
+## Docker
+
+1. Run `apt-get install -y libsm6 libxext6 libxrender-dev libxext-dev && pip install -r requirements.txt`
